@@ -1,5 +1,5 @@
 // Package odinerr represents API error interface
-package odinerr
+package sneterr
 
 import (
 	"fmt"
@@ -52,11 +52,8 @@ type baseError struct {
 	// Optional original error. O que causou o erro
 	err error
 
-	//arquivo onde foi criado o erro
 	file string
-
-	//linha do arquivo onde foi criado
-	linhaArquivo int
+	line int
 }
 
 // newBaseError returns an error object for the code, message, and errors.
@@ -66,11 +63,13 @@ type baseError struct {
 //
 // message is the free flow string containing detailed information about the
 // error.
-func newBaseError(code, message string, origErr error, file string, linha int) *baseError {
+func newBaseError(code, message string, origErr error, file string, line int) *baseError {
 	b := &baseError{
 		code:    code,
 		message: message,
 		err:     origErr,
+		file:    file,
+		line:    line,
 	}
 
 	return b
