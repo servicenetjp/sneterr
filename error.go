@@ -84,7 +84,7 @@ func (b baseError) Error() string {
 		causaErro = b.err.Error()
 	}
 	return fmt.Sprintf("(%s:%d) (code:%s) (msg:%s) (err:%s)",
-		b.file, b.linhaArquivo, b.code, b.message, causaErro)
+		b.file, b.line, b.code, b.message, causaErro)
 }
 
 // String returns the string representation of the error.
